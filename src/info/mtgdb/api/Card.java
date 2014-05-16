@@ -114,6 +114,7 @@ public class Card {
 	 */
 	public Card(JSONObject json) {
 		this();
+		this.json = json;
 		@SuppressWarnings("unchecked")
 		Set<String> set = json.keySet();
 		for( String s : set ) {
@@ -212,6 +213,8 @@ public class Card {
 	private Date releasedAt			= null;
 	
 	private boolean token			= false;
+
+	private JSONObject json			= null;
 
 	/**
 	 * @return String of the URL to retrieve this Card object's image.
@@ -572,6 +575,24 @@ public class Card {
 
 	public void setToken(boolean isToken) {
 		this.token = isToken;
+	}
+
+	public JSONObject getJson() {
+		return json;
+	}
+
+	public String getJSONString() {
+		return json.toString();
+	}
+
+	/**
+	 *
+	 * @param indentFactor
+	 * @return JSON-String
+	 * @see org.json.JSONObject#toString(int)
+	 */
+	public String getJSONString(int indentFactor) {
+		return json.toString(indentFactor);
 	}
 
 }
